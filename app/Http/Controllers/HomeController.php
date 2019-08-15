@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -10,7 +12,7 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
         $this->middleware('auth');
     }
 
@@ -20,7 +22,16 @@ class HomeController extends Controller
      * @return \Illuminate\View\View
      */
     public function index()
-    {
-        return view('dashboard');
+    {   
+        //dd(Auth::user()); 
+        if(Auth::user()->user_type == config('constants.admin_user_type')){
+            return view('dashboard');
+        }else if(Auth::user()->user_type == config('constants.brand_user_type')){
+            return view('brand/dashboard');
+        }else if(Auth::user()->user_type == config('constants.production_user_type')){
+            return view('production/dashboard');
+        }else{
+            echo "Something went wrong!!!!";
+        }
     }
 }
