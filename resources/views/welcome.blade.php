@@ -5,9 +5,22 @@
         <div class="container">
             <div class="header-body text-center mt-7 mb-7">
                 <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 style="font-weight: bold; font-size: 48px; color:#F2BB16;">WELCOME TO HOMERUN MEDIA.</h1>
+                    <div class="col-12">
+                        <h1 style="font-weight: bold; font-size: 59px; color:#F2BB16;padding-bottom:90px;"><span style="background-color: #FF0000;color: #fff;opacity: 0.5">WELCOME TO HOMERUN MEDIA.</span></h1>
                     </div>
+                </div>
+            </div>
+            <div class="header-body text-center mt-7 mb-7">
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <a href="{{url("/register/production")}}"><h1 style="font-weight: bold; font-size: 38px; color:#F2BB16;">PRODUCTION HOUSE REGISTER</h1>
+                    </div>
+                    <div class="col">
+                        <h1></h1>
+                    </div>
+                    <div class="col">
+                        <a href="{{url("/register/brand")}}"><h1 style="font-weight: bold; font-size: 38px; color:#000;">BRAND REGISTER</h1>
+                    </div></a>
                 </div>
             </div>
         </div>

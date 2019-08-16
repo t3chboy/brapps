@@ -15403,6 +15403,7 @@ button.section-darker:focus
 .bg-gradient-primary
 {
     background-image: url("../img/brand/1.jpg") !important;
+    background-size: cover;
 }
 
 .bg-gradient-secondary

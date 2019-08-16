@@ -14,9 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/register/brand', 'Auth\RegisterController@registration_view')->defaults('user_type',config('constants.brand_user_type'));
+Route::get('/register/production', 'Auth\RegisterController@registration_view')->defaults('user_type',config('constants.production_user_type'));
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);

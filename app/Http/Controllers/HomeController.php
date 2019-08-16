@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        //dd(Auth::user()); 
+        //dd(Auth::user()->user_type); 
         if(Auth::user()->user_type == config('constants.admin_user_type')){
             return view('dashboard');
         }else if(Auth::user()->user_type == config('constants.brand_user_type')){

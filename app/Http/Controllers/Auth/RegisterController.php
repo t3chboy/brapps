@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -49,9 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'designation' => ['required', 'string', 'max:255'],
+            'company_name' => ['required', 'string', 'max:255'],
+            'mobile' => ['required','digits:10'],        
         ]);
     }
 
@@ -62,11 +67,28 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {   
         return User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'designation' => $data['designation'],
+            'company_name' => $data['company_name'],
+            'mobile' => $data['mobile'],
+            'user_type' => $data['user_type'],
+            'password' => Hash::make("secret")
         ]);
+    }
+
+    public function registration_view(Request $request,$user_type){
+        return view('auth/register',['user_type' => $user_type]);
+    }
+
+    public function register(Request $request){
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        $registration_msg = "Registration Successfully,will contact you shortly.";
+        //return view('auth/register'.$$request->user_type,['user_type' => $request->user_type,'registration_msg' => $registration_msg ]);
+         return redirect()->back()->with('success',$registration_msg);   
     }
 }
