@@ -12,7 +12,7 @@
 
         $.ajax({
            type:'POST',
-           url:'/production/save',
+           url:base_url+'/production/save',
            processData: false,
            contentType: false,
            data:data,
@@ -26,7 +26,7 @@
             $("#success_alert").show();
             $("#modal-form").animate({ scrollTop: 10 }, "slow");
             $('#save_movie_form')[0].reset();
-            load_production_datatables()
+            load_production_datatables();
             setTimeout(function() {$('#modal-form').modal('hide');}, 3000);
            },
            error:function(data){
@@ -83,7 +83,7 @@
       $('#production_datatable').DataTable({
           processing: true,
           serverSide: true,
-          ajax: '/production/view',
+          ajax: base_url+'/production/view',
           "jQueryUI": false,
           "pagingType" : "numbers",
           columns: [
