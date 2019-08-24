@@ -17,6 +17,6 @@ Class BrandController extends Controller{
     }
 
 	public function view(){
-		return datatables()->of(Productiondata::all())->toJson();
+		return datatables()->collection(Productiondata::all())->addIndexColumn()->make();
 	}		
 }

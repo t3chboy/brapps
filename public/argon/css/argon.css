@@ -178,7 +178,7 @@ dt
 
 dd
 {
-    margin-bottom: .5rem;
+    /*margin-bottom: .5rem;*/
     margin-left: 0;
 }
 
@@ -21866,4 +21866,20 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
     bottom: 0; 
 
     height: 3px;
+}
+
+
+.even-row{
+    background-color: #f5f7f9 !important;
+    border: 1px solid #f5f7f9;
+    line-height: 40px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+
+.odd-row{
+    background-color: #fff !important;
+    border: 1px solid #fff; 
+    line-height: 40px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }

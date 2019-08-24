@@ -140,6 +140,7 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Release Date</th>
                                     <th scope="col">Star cast</th>
+                                    <th scope="col">View</th>
                                 </tr>
                             </thead>
                         </table>
@@ -151,6 +152,8 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
+
+@include('common.movie_data_model')
     
 <script type="text/javascript">
     var base_url = {!! json_encode(url('/')) !!}

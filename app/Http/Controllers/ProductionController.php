@@ -93,7 +93,11 @@ Class ProductionController extends Controller{
 		}
 	}
 
+	public function show($id){
+		return Productiondata::where(['status'=>1,"id"=>$id])->first()->toJson();
+	}
+
 	public function view(){
-		return datatables()->of(Productiondata::all())->toJson();
+		//return datatables()->collection(Productiondata::all())->addIndexColumn()->make();
 	}		
 }
